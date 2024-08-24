@@ -3,49 +3,41 @@ layout: default
 ---
 
 <header>
-{% if site.theme_config.show_navbar == true %}
-  {% include horizontal_list.html collection=site.data.home.navbar_entries %}
-  <div class="dashed"></div>
-{% endif %}
-
-  <h1>{{ site.title }}</h1>
-  {% if site.theme_config.show_footer == true %}
-  <head>
-    <style>
-      footer {
-        display: flex; 
-        align-items: center; 
-        justify-content: flex-start; 
-      }
-      footer a {
-      margin: 0 5px; 
-      }
-      footer a img {
-        width: 30px;
-        height: auto;
-      }
-    </style>
-  </head>
-  <body>
+  {% if site.theme_config.show_navbar == true %}
+    {% include horizontal_list.html collection=site.data.home.navbar_entries %}
+    <div class="dashed"></div>
+  {% endif %}
+  
+    <h1>{{ site.title }}</h1>
     <footer>
-      <a href="https://github.com/noonddudung2">
-        <img src="images/github-mark.png" alt="Github">
-      </a>
       <a href="https://www.linkedin.com/in/noonddudung2/">
-        <img src="images/LI-In-Bug.png" alt="LinkedIn">
+        <img src="images/LI-In-Bug.png" alt="LinkedIn" style="width: 30px; height: auto;">
       </a>
       <a href="https://x.com/noonddudung2">
-        <img src="images/x.png" alt="X">
-
+        <img src="images/x.png" alt="X" style="width: 30px; height: auto;">
+      </a>
+      <a href="https://github.com/noonddudung2">
+        <img src="images/github-mark.png" alt="Github" style="width: 30px; height: auto;">
       </a>
     </footer>
-  </body>
-{% endif %}
-
-  {% if site.theme_config.show_description == true %}
-    <p>{{ site.description }}</p>
-  {% endif %}
-</header>
+  </header>
+  <style>
+    footer {
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-start; 
+    }
+    footer a {
+      margin-right: 5px; 
+    }
+    footer a img {
+      width: 20px;
+      height: auto;
+    }
+  </style>
+    {% if site.theme_config.show_description == true %}
+      <p>{{ site.description }}</p>
+    {% endif %}
 
 {{ content }}
 
@@ -70,35 +62,9 @@ layout: default
 {% endif %}
 
 
-<!-- {% if site.theme_config.show_footer == true %}
-  <head>
-    <style>
-      footer {
-        display: flex; 
-        align-items: center; 
-        justify-content: flex-start; 
-      }
-      footer a {
-      margin: 0 5px; 
-      }
-      footer a img {
-        width: 30px;
-        height: auto;
-      }
-    </style>
-  </head>
-  <body>
-    <footer>
-      <a href="https://github.com/noonddudung2">
-        <img src="images/github-mark.png" alt="Github">
-      </a>
-      <a href="https://www.linkedin.com/in/noonddudung2/">
-        <img src="images/LI-In-Bug.png" alt="LinkedIn">
-      </a>
-      <a href="https://x.com/noonddudung2">
-        <img src="images/x.png" alt="X">
-
-      </a>
-    </footer>
-  </body>
-{% endif %} -->
+{% if site.theme_config.show_footer == true %}
+  <footer>
+    <div class="dashed"></div>
+    {% include horizontal_list.html collection=site.data.home.footer_entries %}
+  </footer>
+{% endif %}

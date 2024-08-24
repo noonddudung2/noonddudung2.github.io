@@ -1,38 +1,41 @@
 navbar_entries:
   - title: about
     url: about
+  
+  # - title: portfolio
+  #   url: portfolio
 
-  - title: blog
-    url: blog
+  # - title: post
+  #   url: posts
 
-  - title: website
-    url: https://www.abhinav.co
+  # - title: website
+  #   url: https://www.abhinav.co
 
 project_entries:
-  - title: Project 1
-    url: overview-post
-    desc: This is an example project, configured in _data/home.yml
+  - title: DragText
+    url: DragText
+    desc: We optimizes text embedding in conjunction with the dragging process to pair with the modified image embedding.
 
   - title: Project 2
-    url: overview-post
+    url: MasaCtrl
     desc: Projects are shown in card layout
 
   - title: Project 3
-    url: overview-post
+    url: MasaCtrl
     desc: You can control visibility from _config.yml file
 
   - title: Project 4
-    url: overview-post
+    url: MasaCtrl
     desc: This project uses highlight markup, configured in _data/home.yml
     highlight: WIP
 
   - title: Project 5
-    url: overview-post
+    url: MasaCtrl
     desc: Moonwalk also has horizontal list (used in header and footer)
     highlight: WIP
 
   - title: Project 6
-    url: overview-post
+    url: MasaCtrl
     desc: It also has a scalable vertical list (in case you need it)
 
 old_project_entries:
@@ -53,15 +56,15 @@ old_project_entries:
     url: https://www.humangous.co
     desc: The better people know you, the better they collaborate
 
-footer_entries:
-  - title: blog
-    url: https://www.noonddudung2.github.io
+# footer_entries:
+#   - title: blog
+#     url: https://www.noonddudung2.github.io
 
-  - title: x
-    url: https://x.com/noonddudung2
+#   - title: x
+#     url: https://x.com/noonddudung2
 
-  - title: github
-    url: https://github.com/noonddudung2
+#   - title: github
+#     url: https://github.com/noonddudung2
 
   # - title: feed
   #   url: feed.xml
