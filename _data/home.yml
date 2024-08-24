@@ -54,17 +54,17 @@ old_project_entries:
     desc: The better people know you, the better they collaborate
 
 footer_entries:
-  - title: abhinav's homepage
-    url: https://www.abhinav.co
+  - title: blog
+    url: https://www.noonddudung2.github.io
 
-  - title: twitter
-    url: https://twitter.com/abhinav
+  - title: x
+    url: https://x.com/noonddudung2
 
   - title: github
-    url: https://github.com/abhinavs
+    url: https://github.com/noonddudung2
 
-  - title: feed
-    url: feed.xml
+  # - title: feed
+  #   url: feed.xml
 
 misc_entries:
   - title: this is an example vertical list
