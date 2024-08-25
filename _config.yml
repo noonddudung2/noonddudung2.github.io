@@ -5,7 +5,7 @@ description: > # description of the site (multiple lines allowed)
   - Interest: Computer Vision, Diffusion Models, Image Editing
 permalink: /:slug
 
-favicon: "logo.png" # relative path to site's favicon
+favicon: "logo3.png" # relative path to site's favicon
 
 twitter:
     username: abhinav # update or delete this
@@ -48,3 +48,8 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-soopr-seo-tag
+  
+markdown: kramdown
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false

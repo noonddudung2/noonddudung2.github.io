@@ -6,30 +6,30 @@
 
   <title>
     
-      Overview Post
+      Vision Mamba
     
   </title>
 
   <!-- Begin Jekyll SEO tag v2.7.3 -->
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Overview Post" />
-<meta name="author" content="Abhinav Saxena" />
+<meta property="og:title" content="Vision Mamba" />
+<meta name="author" content="noonddudung2" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Lorem ipsum1 dolor sit amet, consectetur adipiscing elit. Pellentesque vel lacinia neque. Praesent nulla quam, ullamcorper in sollicitudin ac, molestie sed justo. Cras aliquam, sapien id consectetur accumsan, augue magna faucibus ex, ut ultricies turpis tortor vel ante. In at rutrum tellus. this is a footnote. You should reach here if you click on the corresponding superscript number. &#8617;" />
-<meta property="og:description" content="Lorem ipsum1 dolor sit amet, consectetur adipiscing elit. Pellentesque vel lacinia neque. Praesent nulla quam, ullamcorper in sollicitudin ac, molestie sed justo. Cras aliquam, sapien id consectetur accumsan, augue magna faucibus ex, ut ultricies turpis tortor vel ante. In at rutrum tellus. this is a footnote. You should reach here if you click on the corresponding superscript number. &#8617;" />
-<link rel="canonical" href="http://localhost:4000/overview-post" />
-<meta property="og:url" content="http://localhost:4000/overview-post" />
+<meta name="description" content="[논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model" />
+<meta property="og:description" content="[논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model" />
+<link rel="canonical" href="http://localhost:4000/vision-mamba" />
+<meta property="og:url" content="http://localhost:4000/vision-mamba" />
 <meta property="og:site_name" content="Noonddudung2" />
-<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/overview-post" />
+<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/vision-mamba" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-07-07T00:00:00+09:00" />
+<meta property="article:published_time" content="2024-08-25T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/overview-post" />
-<meta property="twitter:title" content="Overview Post" />
+<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/vision-mamba" />
+<meta property="twitter:title" content="Vision Mamba" />
 <meta name="twitter:site" content="@abhinav" />
-<meta name="twitter:creator" content="@Abhinav Saxena" />
+<meta name="twitter:creator" content="@noonddudung2" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Overview Post","dateModified":"2020-07-07T00:00:00+09:00","datePublished":"2020-07-07T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/overview-post"},"author":{"@type":"Person","name":"Abhinav Saxena"},"description":"Lorem ipsum1 dolor sit amet, consectetur adipiscing elit. Pellentesque vel lacinia neque. Praesent nulla quam, ullamcorper in sollicitudin ac, molestie sed justo. Cras aliquam, sapien id consectetur accumsan, augue magna faucibus ex, ut ultricies turpis tortor vel ante. In at rutrum tellus. this is a footnote. You should reach here if you click on the corresponding superscript number. &#8617;","url":"http://localhost:4000/overview-post","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Vision Mamba","dateModified":"2024-08-25T00:00:00+09:00","datePublished":"2024-08-25T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/vision-mamba"},"author":{"@type":"Person","name":"noonddudung2"},"description":"[논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model","url":"http://localhost:4000/vision-mamba","@context":"https://schema.org"}</script>
 <script async defer data-soopr-token="" src="https://sdk.soopr.co/soopr.js"  ></script>
 <!-- End Jekyll SEO tag -->
 
@@ -87,20 +87,20 @@
     <main class="page-content" aria-label="Content">
       <div class="w">
         <a href="/">home..</a>
-<h1 class="post-title">Overview Post</h1>
+<h1 class="post-title">Vision Mamba</h1>
 <p class="post-date text-bold">
   
-    <span class="text-upcase">Abhinav Saxena</span> / 
+    <span class="text-upcase">noonddudung2</span> / 
   
   
-    <span class="text-upcase">July 2020</span>
+    <span class="text-upcase">August 2024</span>
   
 
 
   
   
-  (339 Words, 
-  2 Minutes)
+  (545 Words, 
+  4 Minutes)
   
 
 </p>
@@ -113,20 +113,118 @@
 
   <div class="">
     
-    <span class="tag">overview</span>
+    <span class="tag">MAMBA</span>
     
-    <span class="tag">moonwalk</span>
+    <span class="tag">ICML 2024</span>
     
   </div>
 
 
-<p>Lorem ipsum<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> dolor sit amet, consectetur adipiscing elit. Pellentesque vel lacinia neque. Praesent nulla quam, ullamcorper in sollicitudin ac, molestie sed justo. Cras aliquam, sapien id consectetur accumsan, augue magna faucibus ex, ut ultricies turpis tortor vel ante. In at rutrum tellus.</p>
+<h1 id="-논문리뷰-vision-mamba-efficient-visual-representation-learning-with-bidirectional-state-space-model"><span style="color: black; background-color: #ffebb4"> [논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model</span></h1>
+
+<ul>
+  <li>Paper: <a href="https://arxiv.org/abs/2401.09417">Vision Mamba</a></li>
+  <li>Github: <a href="https://github.com/hustvl/Vim">Vision Mamba Code</a></li>
+</ul>
+
+<hr />
+
+<h2 id="abstract"><span style="color: black; background-color: #ffd1df">Abstract</span></h2>
+
+<ul>
+  <li>문제점
+    <ul>
+      <li>visual data는 position-sensitivity 존재 &amp; global context of visiual understanding 필요</li>
+      <li>그러나 state space models (SSMs)는 이게 어려웠음</li>
+    </ul>
+  </li>
+  <li>제시하는 방법: Vision Mamba (Vim)
+    <ul>
+      <li>marks the image sequences with <strong><u>position emebddings</u></strong></li>
+      <li>compresses the visiual represntation with <strong><u>bidrectional SSMs</u></strong></li>
+    </ul>
+  </li>
+  <li>장점
+    <ul>
+      <li>computation &amp; memory efficiency</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="background"><span style="color: black; background-color: #ffd1df">Background</span></h2>
+<ul>
+  <li><a href="https://huggingface.co/blog/lbourdois/get-on-the-ssm-train">Intro to State Space Models (SSM)</a>
+    <ul>
+      <li><img src="/images/SSM.png" alt="SSM" /></li>
+    </ul>
+  </li>
+  <li>Mamba
+    <ul>
+      <li><img src="/images/mamba.png" alt="Mamba" /></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="method"><span style="color: black; background-color: #ffd1df">Method</span></h2>
+<h3 id="preliminaries"><span style="color: black; background-color: #ffe4e1">Preliminaries</span></h3>
+
+<p>일단 이해는 안되지만 어쨌든 간에 continuous $\rightarrow$ discrete하게 만들고 그거를 convolution을 이용해서 output을 예측할 수 있다는 거인듯? 당연한건가 암튼…</p>
+
+<ul>
+  <li>Continuous System
+    <ul>
+      <li>$\mathbf{h’(t)}=\mathbf{A}\mathbf{h(t)}+\mathbf{B}\mathbf{x(t)}$</li>
+      <li>$\mathbf{y(t)}=\mathbf{C}\mathbf{h(t)}$</li>
+    </ul>
+  </li>
+  <li>Notation
+    <ul>
+      <li>$\mathbf{A} \in \mathbb{R^{N \times N}},\mathbf{B} \in \mathbb{R^{N \times 1}},\mathbf{C} \in \mathbb{R^{1 \times N}}$</li>
+      <li>$\mathbf{h(t)} \in \mathbb{R^{N \times 1}}$</li>
+      <li>$\mathbf{x(t) \in \mathbb{R} \rightarrow{y(t)} \in \mathbb{R}}$</li>
+    </ul>
+  </li>
+  <li>Discretization with zero-order hold (ZOH)
+    <ul>
+      <li>$\mathbf{\bar{A} = exp(\Delta{A})} \ (\mathbf{\Delta}: timescale \ parameter)$</li>
+      <li>$\mathbf{\bar{B}={\Delta A}^{-1}(exp(\Delta A)-I)\cdot{\Delta B}}$</li>
+    </ul>
+  </li>
+  <li>Discretization System
+    <ul>
+      <li>$\mathbf{h}<em>{t} = \bar{\mathbf{A}}{\mathbf{h}</em>{t-1}+\bar{\mathbf{B}}\mathbf{x}_{t}}$</li>
+      <li>$\mathbf{\bar{y}=\mathbf{C}{h}_{t}}$</li>
+    </ul>
+  </li>
+  <li>Output <strong>y</strong> w/ global conv - M 시간에서의 응답 변화를 추출하기 위함
+    <ul>
+      <li>$\mathbf{\bar{K}=(C\bar{B},C{\bar{AB}},…,C{\bar{A}}^{M-1}{\bar{B}})}$</li>
+      <li>$\mathbf{y=x\times{\bar{K}}}$</li>
+      <li>$\mathbf{\bar{K} \in R^M},\ \mathbf{M}:input \ sequence의 \ 길이$</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="vision-mamba"><span style="color: black; background-color: #ffe4e1">Vision Mamba</span></h3>
+<p><img src="/images/vim_overview.png" alt="vim" /></p>
+<ul>
+  <li>2-D image: $ \mathbf{t \in \mathbb{R}^{H \times W \times C} \rightarrow x_p \in \mathbb{R}^{J \times (P^2)\cdot C}}$</li>
+</ul>
 
 <h1 id="sample-heading-1">Sample heading 1</h1>
+
 <h2 id="sample-heading-2">Sample heading 2</h2>
+
 <h3 id="sample-heading-3">Sample heading 3</h3>
+
 <h4 id="sample-heading-4">Sample heading 4</h4>
+
 <h5 id="sample-heading-5">Sample heading 5</h5>
+
 <h6 id="sample-heading-6">Sample heading 6</h6>
 
 <p>Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod.</p>
@@ -136,7 +234,7 @@
 <p>Unordered:</p>
 
 <ul>
-  <li>Fusce non velit cursus ligula mattis convallis vel at metus<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>.</li>
+  <li>Fusce non velit cursus ligula mattis convallis vel at metus<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">1</a></sup>.</li>
   <li>Sed pharetra tellus massa, non elementum eros vulputate non.</li>
   <li>Suspendisse potenti.</li>
 </ul>
@@ -160,11 +258,11 @@
 
 <h2 id="thematic-breaks-hr">Thematic breaks (&lt;hr&gt;)</h2>
 
-<p>Mauris viverra dictum ultricies<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup>. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. <strong>You can put some text inside the horizontal rule like so.</strong></p>
+<p>Mauris viverra dictum ultricies<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">2</a></sup>. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. <strong>You can put some text inside the horizontal rule like so.</strong></p>
 
-<hr data-content="hr with text" />
+<hr />
 
-<p>Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. <strong>Or you can just have an clean horizontal rule.</strong></p>
+<p data-content="hr with text">Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. <strong>Or you can just have an clean horizontal rule.</strong></p>
 
 <hr />
 
@@ -215,15 +313,12 @@ console.log(ultimateTruth);
 
 <p><img src="http://www.abhinavsaxena.com/images/abhinav.jpeg" alt="theme logo" /></p>
 
-<p>This is an image<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">4</a></sup></p>
+<p>This is an image<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">3</a></sup></p>
 
-<hr data-content="footnotes" />
+<hr />
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:1" role="doc-endnote">
-      <p>this is a footnote. You should reach here if you click on the corresponding superscript number. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
     <li id="fn:2" role="doc-endnote">
       <p>hey there, don’t forget to read all the footnotes! <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
@@ -262,4 +357,28 @@ console.log(ultimateTruth);
     </main><script async defer src="https://sdk.soopr.co/soopr.js"></script></body>
 </html>
 
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 
