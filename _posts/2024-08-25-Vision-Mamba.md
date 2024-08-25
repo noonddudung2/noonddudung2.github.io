@@ -76,7 +76,7 @@ use_math: true
 ### <span style="color: black; background-color: #ffe4e1">Vim Block</span>
 
 
-
+<!-- 
 # Sample heading 1
 
 ## Sample heading 2
@@ -164,4 +164,4 @@ This is an image[^4]
     
 [^3]: this is another footnote.
     
-[^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere.
+[^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. -->
