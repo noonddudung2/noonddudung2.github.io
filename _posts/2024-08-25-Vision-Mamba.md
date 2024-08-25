@@ -27,9 +27,9 @@ use_math: true
 ## <span style="color: black; background-color: #ffd1df">Background</span>
 * [Intro to State Space Models (SSM)](https://huggingface.co/blog/lbourdois/get-on-the-ssm-train)
     * ![SSM](/images/SSM.png)
-* Mamba
+* [Mamba](https://tulip-phalange-a1e.notion.site/05f977226a0e44c6b35ed9bfe0076839)
     * ![Mamba](/images/mamba.png)
-
+    
 ---
 
 ## <span style="color: black; background-color: #ffd1df">Method</span>
@@ -47,17 +47,34 @@ use_math: true
 * Discretization with zero-order hold (ZOH)
   * $\mathbf{\bar{A} = exp(\Delta{A})} \ (\mathbf{\Delta}: timescale \ parameter)$
   * $\mathbf{\bar{B}={\Delta A}^{-1}(exp(\Delta A)-I)\cdot{\Delta B}}$
-* Discretization System
-  * $\mathbf{h}_{t} = \bar{\mathbf{A}}{\mathbf{h}_{t-1}+\bar{\mathbf{B}}\mathbf{x}_{t}}$
-  * $\mathbf{\bar{y}=\mathbf{C}{h}_{t}}$
-* Output **y** w/ global conv - M 시간에서의 응답 변화를 추출하기 위함
+* Discretization System (시간에 따른 중요성을 강조하기 위한 matrix)
+  * $\mathbf{h_{t} = \bar{A} h_{t-1}+\bar{B}x_{t}}$
+  * $\mathbf{\bar{y}=\mathbf{C}h_{t}}$
+* Output **y** w/ global conv: Linear Time Invariance (LTI)
   * $\mathbf{\bar{K}=(C\bar{B},C{\bar{AB}},...,C{\bar{A}}^{M-1}{\bar{B}})}$
   * $\mathbf{y=x\times{\bar{K}}}$
-  * $\mathbf{\bar{K} \in R^M},\ \mathbf{M}:input \ sequence의 \ 길이$
+  * $\mathbf{\bar{K} \in R^M \ M :input \ sequence의 \ 길이}$
+
+---
 
 ### <span style="color: black; background-color: #ffe4e1">Vision Mamba</span>
 ![vim](/images/vim_overview.png)
-* 2-D image: $ \mathbf{t \in \mathbb{R}^{H \times W \times C} \rightarrow x_p \in \mathbb{R}^{J \times (P^2)\cdot C}}$
+* 2-D image: $ \mathbf{t \in \mathbb{R}^{H \times W \times C} \rightarrow x_p \in \mathbb{R}^{J \times (P^2 \cdot C)}}$
+  * $\mathbf{P}$ : patch size
+  * $\mathbf{J}$ : 전체 patch 수 아마도 $\mathbf{\frac{H}{P},\frac{W}{P}}$
+  * $\mathbf{x_p \in \mathbb{R}^{J \times D}}$ 인데, $\mathbf{t_{cls}}$ 가 추가되어서 아래처럼 +1 된 듯
+  * $\mathbf{E_{pos} \in \mathbb{R}^{(J+1)} \times D}$
+
+![vim_calc](/images/vim.jpeg)
+
+* $\mathbf {T_l = Vim(T_{l-1})+T_{l-1}}$  
+* $\mathbf{f = Norm(T^0_{L}) \\ (T^0_L: L번째 \\ 레이어의 \\ class \\ token \\ output)}$
+* $\mathbf{\hat{p} = MLP(f)} \\ \mathbf{(final \\ prediction \\ \hat p)}$
+
+---
+
+### <span style="color: black; background-color: #ffe4e1">Vim Block</span>
+
 
 
 # Sample heading 1
