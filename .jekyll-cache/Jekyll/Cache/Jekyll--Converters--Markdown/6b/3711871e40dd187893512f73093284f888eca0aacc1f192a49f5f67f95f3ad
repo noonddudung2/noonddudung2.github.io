@@ -1,126 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="html" data-theme="light"><head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>
-    
-      Vision Mamba
-    
-  </title>
-
-  <!-- Begin Jekyll SEO tag v2.7.3 -->
-<meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Vision Mamba" />
-<meta name="author" content="noonddudung2" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="[논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model" />
-<meta property="og:description" content="[논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model" />
-<link rel="canonical" href="http://localhost:4000/vision-mamba" />
-<meta property="og:url" content="http://localhost:4000/vision-mamba" />
-<meta property="og:site_name" content="Noonddudung2" />
-<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/vision-mamba" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-08-25T00:00:00+09:00" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/vision-mamba" />
-<meta property="twitter:title" content="Vision Mamba" />
-<meta name="twitter:site" content="@abhinav" />
-<meta name="twitter:creator" content="@noonddudung2" />
-<script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Vision Mamba","dateModified":"2024-08-25T00:00:00+09:00","datePublished":"2024-08-25T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/vision-mamba"},"author":{"@type":"Person","name":"noonddudung2"},"description":"[논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model","url":"http://localhost:4000/vision-mamba","@context":"https://schema.org"}</script>
-<script async defer data-soopr-token="" src="https://sdk.soopr.co/soopr.js"  ></script>
-<!-- End Jekyll SEO tag -->
-
-  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Noonddudung2" />
-
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
-  <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#00aba9">
-  <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!-- Favicon -->
-
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  
-    <script type="text/javascript">
-  window.addEventListener('load', themeChange);
-  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-  if (currentTheme)
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-  function themeChange() {
-    let button = document.querySelector('.theme-toggle');
-
-    button.addEventListener('click', function (e) {
-      let currentTheme = document.documentElement.getAttribute('data-theme');
-      if (currentTheme === 'dark') {
-        transition();
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-      } else {
-        transition();
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-      }
-    });
-
-    let transition = () => {
-      document.documentElement.classList.add('transition');
-      window.setTimeout(() => {
-        document.documentElement.classList.remove('transition');
-      }, 1000);
-    }
-  }
-</script>
-
-
-  
-</head>
-<body>
-    <main class="page-content" aria-label="Content">
-      <div class="w">
-        <a href="/">home..</a>
-<h1 class="post-title">Vision Mamba</h1>
-<p class="post-date text-bold">
-  
-    <span class="text-upcase">noonddudung2</span> / 
-  
-  
-    <span class="text-upcase">August 2024</span>
-  
-
-
-  
-  
-  (779 Words, 
-  5 Minutes)
-  
-
-</p>
-
-<div class="soopr-btn"
-   data-twitter="SooprCo"
->
-</div>
-
-
-  <div class="">
-    
-    <span class="tag">MAMBA</span>
-    
-    <span class="tag">ICML 2024</span>
-    
-  </div>
-
-
-<h1 id="-논문리뷰-vision-mamba-efficient-visual-representation-learning-with-bidirectional-state-space-model"><span style="color: black; background-color: #ffebb4"> [논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model</span></h1>
+I"�#<h1 id="-논문리뷰-vision-mamba-efficient-visual-representation-learning-with-bidirectional-state-space-model"><span style="color: black; background-color: #ffebb4"> [논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model</span></h1>
 
 <ul>
   <li>Paper: <a href="https://arxiv.org/abs/2401.09417">Vision Mamba</a></li>
@@ -161,24 +39,34 @@
       <li>상태 벡터 (x, y, distance to exit)</li>
       <li>상태 공간 모델 (SSMs): 상태 표현을 설명하고, 입력에 따라 다음 상태가 어떻게 될 지 예측</li>
       <li><strong>목적: input에서 output으로 이동할 수 있도록 상태표현 $\mathbf{h_t}$를 찾는 것</strong></li>
-      <li>
-        <p><img src="/images/ssm_calc.png" alt="SSM_calc" /></p>
-      </li>
-      <li>$\mathbf{h’(t)}=\mathbf{A}\mathbf{h(t)}+\mathbf{B}\mathbf{x(t)}$
+      <li><img src="/images/ssm_calc.png" alt="SSM_calc" /></li>
+      <li>notation
         <ul>
           <li>$\mathbf{x(t)}$: input sequence (ex. 미로에서 왼쪽, 아래로 움직임)</li>
           <li>$\mathbf{h(t)}$: distance to exit, x, y</li>
-          <li>$\mathbf{A}\mathbf{h(t)}$ $\mathbf{(h(t): current \ state)}$ : h(t)가 시간에 따라서 어떻게 evolve 되는지</li>
-          <li>$\mathbf{Bx(t) (x(t):input)}$: $\mathbf{x(t)}$ 가 state에 어떻게 영향을 미치는지</li>
-        </ul>
-      </li>
-      <li>$\mathbf{y(t)}=\mathbf{C}\mathbf{h(t)}$
-        <ul>
           <li>$\mathbf{y(t)}$: predicted output (ex. 출구로 더 빨리 도달하기 위해 왼쪽으로 이동)</li>
-          <li>$\mathbf{Ch(t)}$: current state가 output에 어떻게 영향을 미치는지</li>
         </ul>
       </li>
-      <li>Discretization with zero-order hold (ZOH) - 텍스트 같은 데이터는 이산화된 데이터기 때문에 연속적인 데이터를 이산화하는 과정이 필요함
+    </ul>
+
+    <blockquote>
+      <ul>
+        <li>$\mathbf{h’(t)}=\mathbf{A}\mathbf{h(t)}+\mathbf{B}\mathbf{x(t)}$
+          <ul>
+            <li>$\mathbf{A}\mathbf{h(t)}$ $\mathbf{(h(t): current \ state)}$ : h(t)가 시간에 따라서 어떻게 evolve 되는지</li>
+            <li>$\mathbf{Bx(t) (x(t):input)}$: $\mathbf{x(t)}$ 가 state에 어떻게 영향을 미치는지</li>
+          </ul>
+        </li>
+        <li>$\mathbf{y(t)}=\mathbf{C}\mathbf{h(t)}$
+          <ul>
+            <li>$\mathbf{Ch(t)}$: current state가 output에 어떻게 영향을 미치는지</li>
+          </ul>
+        </li>
+      </ul>
+    </blockquote>
+
+    <ul>
+      <li>Discretization with zero-order hold (ZOH)
         <ul>
           <li>$\mathbf{\bar{A} = exp(\Delta{A})} \ (\mathbf{\Delta}: timescale \ parameter)$</li>
           <li>$\mathbf{\bar{B}={\Delta A}^{-1}(exp(\Delta A)-I)\cdot{\Delta B}}$</li>
@@ -190,25 +78,12 @@
           <li>$\mathbf{\bar{y}=\mathbf{C}h_{t}}$</li>
         </ul>
       </li>
-      <li>재귀적 표현
-        <ul>
-          <li><img src="/images/ssm_recurrent.png" alt="SSM_recurrent" /></li>
-        </ul>
-      </li>
-      <li>Convolution
-        <ul>
-          <li>$\mathbf{\bar{K}=(C\bar{B},C{\bar{AB}},…,C{\bar{A}}^{M-1}{\bar{B}})}$</li>
-          <li>$\mathbf{y=x\times{\bar{K}}}$</li>
-          <li>$\mathbf{\bar{K} \in R^M \ M :input \ sequence의 \ 길이}$</li>
-        </ul>
-      </li>
     </ul>
   </li>
   <li><a href="https://tulip-phalange-a1e.notion.site/05f977226a0e44c6b35ed9bfe0076839">Mamba</a>
     <ul>
       <li><img src="/images/mamba.png" alt="Mamba" /></li>
       <li>transformer처럼 훈련을 병렬화 &amp; 추론이 선형적으로 (빠르게) 이루어지는 아키텍처가 Mamba</li>
-      <li></li>
     </ul>
   </li>
 </ul>
@@ -371,55 +246,4 @@ This is an image[^4]
 [^3]: this is another footnote.
     
 [^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. -->
-
-
-        
-          <button title="Toggle Theme" class="theme-toggle">
-  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentcolor">
-    <circle cx="16" cy="16" r="14" fill="none" stroke="currentcolor" stroke-width="4"></circle>
-    <path d="
-             M 16 0
-             A 16 16 0 0 0 16 32
-             z">
-    </path>
-  </svg>
-</button>
-
-        
-        <div class="credits">&copy;&nbsp;2024&nbsp;noonddudung2
-          &nbsp;
-          •
-          &nbsp;Powered by <a href="https://www.soopr.co" target="_blank" rel="noreferrer">Soopr</a>
-          &nbsp;
-          •
-          &nbsp;Theme&nbsp; <a href="https://github.com/abhinavs/moonwalk" target="_blank" rel="noreferrer">Moonwalk</a>
-        </div>
-      </div>
-    </main><script async defer src="https://sdk.soopr.co/soopr.js"></script></body>
-</html>
-
-
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
-        },
-        tex2jax: {
-        inlineMath: [ ['$', '$'] ],
-        displayMath: [ ['$$', '$$'] ],
-        processEscapes: true,
-      }
-    });
-    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-          alert("Math Processing Error: "+message[1]);
-        });
-    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-          alert("Math Processing Error: "+message[1]);
-        });
-    </script>
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-
+:ET

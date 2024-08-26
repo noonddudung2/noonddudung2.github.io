@@ -27,9 +27,42 @@ use_math: true
 ## <span style="color: black; background-color: #ffd1df">Background</span>
 * [Intro to State Space Models (SSM)](https://huggingface.co/blog/lbourdois/get-on-the-ssm-train)
     * ![SSM](/images/SSM.png)
+    * 상태 벡터 (x, y, distance to exit)
+    * 상태 공간 모델 (SSMs): 상태 표현을 설명하고, 입력에 따라 다음 상태가 어떻게 될 지 예측
+    * **목적: input에서 output으로 이동할 수 있도록 상태표현 $\mathbf{h_t}$를 찾는 것**
+    * ![SSM_calc](/images/ssm_calc.png)
+
+    * $\mathbf{h'(t)}=\mathbf{A}\mathbf{h(t)}+\mathbf{B}\mathbf{x(t)}$
+      * $\mathbf{x(t)}$: input sequence (ex. 미로에서 왼쪽, 아래로 움직임)
+      * $\mathbf{h(t)}$: distance to exit, x, y
+      * $\mathbf{A}\mathbf{h(t)}$ $\mathbf{(h(t): current \ state)}$ : h(t)가 시간에 따라서 어떻게 evolve 되는지
+      * $\mathbf{Bx(t) (x(t):input)}$: $\mathbf{x(t)}$ 가 state에 어떻게 영향을 미치는지
+    * $\mathbf{y(t)}=\mathbf{C}\mathbf{h(t)}$
+      * $\mathbf{y(t)}$: predicted output (ex. 출구로 더 빨리 도달하기 위해 왼쪽으로 이동)
+      * $\mathbf{Ch(t)}$: current state가 output에 어떻게 영향을 미치는지
+
+    * Discretization with zero-order hold (ZOH) - 텍스트 같은 데이터는 이산화된 데이터기 때문에 연속적인 데이터를 이산화하는 과정이 필요함
+      * $\mathbf{\bar{A} = exp(\Delta{A})} \ (\mathbf{\Delta}: timescale \ parameter)$
+      * $\mathbf{\bar{B}={\Delta A}^{-1}(exp(\Delta A)-I)\cdot{\Delta B}}$
+    * Discretization System (시간에 따른 중요성을 강조하기 위한 matrix)
+      * $\mathbf{h_{t} = \bar{A} h_{t-1}+\bar{B}x_{t}}$
+      * $\mathbf{\bar{y}=\mathbf{C}h_{t}}$
+    
+    * 재귀적 표현
+      * ![SSM_recurrent](/images/ssm_recurrent.png)
+
+    * Convolution
+      * $\mathbf{\bar{K}=(C\bar{B},C{\bar{AB}},...,C{\bar{A}}^{M-1}{\bar{B}})}$
+      * $\mathbf{y=x\times{\bar{K}}}$
+      * $\mathbf{\bar{K} \in R^M \ M :input \ sequence의 \ 길이}$
+
+
+
 * [Mamba](https://tulip-phalange-a1e.notion.site/05f977226a0e44c6b35ed9bfe0076839)
     * ![Mamba](/images/mamba.png)
-    
+    * transformer처럼 훈련을 병렬화 & 추론이 선형적으로 (빠르게) 이루어지는 아키텍처가 Mamba
+    * 
+
 ---
 
 ## <span style="color: black; background-color: #ffd1df">Method</span>

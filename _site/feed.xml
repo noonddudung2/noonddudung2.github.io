@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-25T23:34:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Noonddudung2</title><subtitle>- Interest: Computer Vision, Diffusion Models, Image Editing
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-26T14:21:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Noonddudung2</title><subtitle>- Interest: Computer Vision, Diffusion Models, Image Editing
 </subtitle><author><name>noonddudung2</name></author><entry><title type="html">Vision Mamba</title><link href="http://localhost:4000/vision-mamba" rel="alternate" type="text/html" title="Vision Mamba" /><published>2024-08-25T00:00:00+09:00</published><updated>2024-08-25T00:00:00+09:00</updated><id>http://localhost:4000/Vision-Mamba</id><content type="html" xml:base="http://localhost:4000/vision-mamba">&lt;h1 id=&quot;-논문리뷰-vision-mamba-efficient-visual-representation-learning-with-bidirectional-state-space-model&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffebb4&quot;&gt; [논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model&lt;/span&gt;&lt;/h1&gt;
 
 &lt;ul&gt;
@@ -37,11 +37,57 @@
   &lt;li&gt;&lt;a href=&quot;https://huggingface.co/blog/lbourdois/get-on-the-ssm-train&quot;&gt;Intro to State Space Models (SSM)&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;img src=&quot;/images/SSM.png&quot; alt=&quot;SSM&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;상태 벡터 (x, y, distance to exit)&lt;/li&gt;
+      &lt;li&gt;상태 공간 모델 (SSMs): 상태 표현을 설명하고, 입력에 따라 다음 상태가 어떻게 될 지 예측&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;목적: input에서 output으로 이동할 수 있도록 상태표현 $\mathbf{h_t}$를 찾는 것&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;img src=&quot;/images/ssm_calc.png&quot; alt=&quot;SSM_calc&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;$\mathbf{h’(t)}=\mathbf{A}\mathbf{h(t)}+\mathbf{B}\mathbf{x(t)}$
+        &lt;ul&gt;
+          &lt;li&gt;$\mathbf{x(t)}$: input sequence (ex. 미로에서 왼쪽, 아래로 움직임)&lt;/li&gt;
+          &lt;li&gt;$\mathbf{h(t)}$: distance to exit, x, y&lt;/li&gt;
+          &lt;li&gt;$\mathbf{A}\mathbf{h(t)}$ $\mathbf{(h(t): current \ state)}$ : h(t)가 시간에 따라서 어떻게 evolve 되는지&lt;/li&gt;
+          &lt;li&gt;$\mathbf{Bx(t) (x(t):input)}$: $\mathbf{x(t)}$ 가 state에 어떻게 영향을 미치는지&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;$\mathbf{y(t)}=\mathbf{C}\mathbf{h(t)}$
+        &lt;ul&gt;
+          &lt;li&gt;$\mathbf{y(t)}$: predicted output (ex. 출구로 더 빨리 도달하기 위해 왼쪽으로 이동)&lt;/li&gt;
+          &lt;li&gt;$\mathbf{Ch(t)}$: current state가 output에 어떻게 영향을 미치는지&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Discretization with zero-order hold (ZOH) - 텍스트 같은 데이터는 이산화된 데이터기 때문에 연속적인 데이터를 이산화하는 과정이 필요함
+        &lt;ul&gt;
+          &lt;li&gt;$\mathbf{\bar{A} = exp(\Delta{A})} \ (\mathbf{\Delta}: timescale \ parameter)$&lt;/li&gt;
+          &lt;li&gt;$\mathbf{\bar{B}={\Delta A}^{-1}(exp(\Delta A)-I)\cdot{\Delta B}}$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Discretization System (시간에 따른 중요성을 강조하기 위한 matrix)
+        &lt;ul&gt;
+          &lt;li&gt;$\mathbf{h_{t} = \bar{A} h_{t-1}+\bar{B}x_{t}}$&lt;/li&gt;
+          &lt;li&gt;$\mathbf{\bar{y}=\mathbf{C}h_{t}}$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;재귀적 표현
+        &lt;ul&gt;
+          &lt;li&gt;&lt;img src=&quot;/images/ssm_recurrent.png&quot; alt=&quot;SSM_recurrent&quot; /&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Convolution
+        &lt;ul&gt;
+          &lt;li&gt;$\mathbf{\bar{K}=(C\bar{B},C{\bar{AB}},…,C{\bar{A}}^{M-1}{\bar{B}})}$&lt;/li&gt;
+          &lt;li&gt;$\mathbf{y=x\times{\bar{K}}}$&lt;/li&gt;
+          &lt;li&gt;$\mathbf{\bar{K} \in R^M \ M :input \ sequence의 \ 길이}$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://tulip-phalange-a1e.notion.site/05f977226a0e44c6b35ed9bfe0076839&quot;&gt;Mamba&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;img src=&quot;/images/mamba.png&quot; alt=&quot;Mamba&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;transformer처럼 훈련을 병렬화 &amp;amp; 추론이 선형적으로 (빠르게) 이루어지는 아키텍처가 Mamba&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -115,121 +161,95 @@
 
 &lt;h3 id=&quot;vim-block&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Vim Block&lt;/span&gt;&lt;/h3&gt;
 
-&lt;h1 id=&quot;sample-heading-1&quot;&gt;Sample heading 1&lt;/h1&gt;
+&lt;!-- 
+# Sample heading 1
 
-&lt;h2 id=&quot;sample-heading-2&quot;&gt;Sample heading 2&lt;/h2&gt;
+## Sample heading 2
 
-&lt;h3 id=&quot;sample-heading-3&quot;&gt;Sample heading 3&lt;/h3&gt;
+### Sample heading 3
 
-&lt;h4 id=&quot;sample-heading-4&quot;&gt;Sample heading 4&lt;/h4&gt;
+#### Sample heading 4
 
-&lt;h5 id=&quot;sample-heading-5&quot;&gt;Sample heading 5&lt;/h5&gt;
+##### Sample heading 5
 
-&lt;h6 id=&quot;sample-heading-6&quot;&gt;Sample heading 6&lt;/h6&gt;
+###### Sample heading 6
 
-&lt;p&gt;Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod.&lt;/p&gt;
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod.
 
-&lt;h2 id=&quot;lists&quot;&gt;Lists&lt;/h2&gt;
+## Lists
 
-&lt;p&gt;Unordered:&lt;/p&gt;
+Unordered:
 
-&lt;ul&gt;
-  &lt;li&gt;Fusce non velit cursus ligula mattis convallis vel at metus&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
-  &lt;li&gt;Sed pharetra tellus massa, non elementum eros vulputate non.&lt;/li&gt;
-  &lt;li&gt;Suspendisse potenti.&lt;/li&gt;
-&lt;/ul&gt;
+- Fusce non velit cursus ligula mattis convallis vel at metus[^2].
+- Sed pharetra tellus massa, non elementum eros vulputate non.
+- Suspendisse potenti.
 
-&lt;p&gt;Ordered:&lt;/p&gt;
+Ordered:
 
-&lt;ol&gt;
-  &lt;li&gt;Quisque arcu felis, laoreet vel accumsan sit amet, fermentum at nunc.&lt;/li&gt;
-  &lt;li&gt;Sed massa quam, auctor in eros quis, porttitor tincidunt orci.&lt;/li&gt;
-  &lt;li&gt;Nulla convallis id sapien ornare viverra.&lt;/li&gt;
-  &lt;li&gt;Nam a est eget ligula pellentesque posuere.&lt;/li&gt;
-&lt;/ol&gt;
+1. Quisque arcu felis, laoreet vel accumsan sit amet, fermentum at nunc.
+2. Sed massa quam, auctor in eros quis, porttitor tincidunt orci.
+3. Nulla convallis id sapien ornare viverra.
+4. Nam a est eget ligula pellentesque posuere.
 
-&lt;h2 id=&quot;blockquote&quot;&gt;Blockquote&lt;/h2&gt;
+## Blockquote
 
-&lt;p&gt;The following is a blockquote:&lt;/p&gt;
+The following is a blockquote:
 
-&lt;blockquote&gt;
-  &lt;p&gt;Suspendisse tempus dolor nec risus sodales posuere. Proin dui dui, mollis a consectetur molestie, lobortis vitae tellus.&lt;/p&gt;
-&lt;/blockquote&gt;
+&gt; Suspendisse tempus dolor nec risus sodales posuere. Proin dui dui, mollis a consectetur molestie, lobortis vitae tellus.
 
-&lt;h2 id=&quot;thematic-breaks-hr&quot;&gt;Thematic breaks (&amp;lt;hr&amp;gt;)&lt;/h2&gt;
+## Thematic breaks (&lt;hr&gt;)
 
-&lt;p&gt;Mauris viverra dictum ultricies&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. &lt;strong&gt;You can put some text inside the horizontal rule like so.&lt;/strong&gt;&lt;/p&gt;
+Mauris viverra dictum ultricies[^3]. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. **You can put some text inside the horizontal rule like so.**
 
-&lt;hr /&gt;
+---
 
-&lt;p data-content=&quot;hr with text&quot;&gt;Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. &lt;strong&gt;Or you can just have an clean horizontal rule.&lt;/strong&gt;&lt;/p&gt;
+{: data-content=&quot;hr with text&quot;}
 
-&lt;hr /&gt;
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. **Or you can just have an clean horizontal rule.**
 
-&lt;p&gt;Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. Or you can just have an clean horizontal rule.&lt;/p&gt;
+---
 
-&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. Or you can just have an clean horizontal rule.
 
-&lt;p&gt;Now some code:&lt;/p&gt;
+## Code
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const ultimateTruth = 'follow middlepath';
+Now some code:
+
+```
+const ultimateTruth = 'follow middlepath';
 console.log(ultimateTruth);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;p&gt;And here is some &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inline code&lt;/code&gt;!&lt;/p&gt;
+And here is some `inline code`!
 
-&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+## Tables
 
-&lt;p&gt;Now a table:&lt;/p&gt;
+Now a table:
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Tables&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Are&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Cool&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;col 3 is&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;right-aligned&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$1600&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;col 2 is&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;centered&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;zebra stripes&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;are neat&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 
-&lt;h2 id=&quot;images&quot;&gt;Images&lt;/h2&gt;
+| Tables        |      Are      |  Cool |
+| --------------- | :-------------: | ------: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered   |   $12 |
+| zebra stripes |   are neat   |    $1 |
 
-&lt;p&gt;&lt;img src=&quot;http://www.abhinavsaxena.com/images/abhinav.jpeg&quot; alt=&quot;theme logo&quot; /&gt;&lt;/p&gt;
+## Images
 
-&lt;p&gt;This is an image&lt;sup id=&quot;fnref:4&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+![theme logo](http://www.abhinavsaxena.com/images/abhinav.jpeg)
 
-&lt;hr /&gt;
+This is an image[^4]
 
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;hey there, don’t forget to read all the footnotes! &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;this is another footnote. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:4&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>noonddudung2</name></author><category term="MAMBA" /><category term="ICML 2024" /><summary type="html">[논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model</summary></entry><entry><title type="html">Masactrl</title><link href="http://localhost:4000/masactrl" rel="alternate" type="text/html" title="Masactrl" /><published>2024-08-24T00:00:00+09:00</published><updated>2024-08-24T00:00:00+09:00</updated><id>http://localhost:4000/MasaCtrl</id><content type="html" xml:base="http://localhost:4000/masactrl">&lt;p&gt;Lorem ipsum&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; dolor sit amet, consectetur adipiscing elit. Pellentesque vel lacinia neque. Praesent nulla quam, ullamcorper in sollicitudin ac, molestie sed justo. Cras aliquam, sapien id consectetur accumsan, augue magna faucibus ex, ut ultricies turpis tortor vel ante. In at rutrum tellus.&lt;/p&gt;
+---
+
+{: data-content=&quot;footnotes&quot;}
+
+[^1]: this is a footnote. You should reach here if you click on the corresponding superscript number.
+    
+[^2]: hey there, don't forget to read all the footnotes!
+    
+[^3]: this is another footnote.
+    
+[^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. --&gt;</content><author><name>noonddudung2</name></author><category term="MAMBA" /><category term="ICML 2024" /><summary type="html">[논문리뷰] Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model</summary></entry><entry><title type="html">Masactrl</title><link href="http://localhost:4000/masactrl" rel="alternate" type="text/html" title="Masactrl" /><published>2024-08-24T00:00:00+09:00</published><updated>2024-08-24T00:00:00+09:00</updated><id>http://localhost:4000/MasaCtrl</id><content type="html" xml:base="http://localhost:4000/masactrl">&lt;p&gt;Lorem ipsum&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; dolor sit amet, consectetur adipiscing elit. Pellentesque vel lacinia neque. Praesent nulla quam, ullamcorper in sollicitudin ac, molestie sed justo. Cras aliquam, sapien id consectetur accumsan, augue magna faucibus ex, ut ultricies turpis tortor vel ante. In at rutrum tellus.&lt;/p&gt;
 
 &lt;h1 id=&quot;sample-heading-1&quot;&gt;Sample heading 1&lt;/h1&gt;
 &lt;p&gt;Hello today I will talk about you&lt;/p&gt;
