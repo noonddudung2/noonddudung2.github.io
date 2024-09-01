@@ -1,9 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-01T20:18:13+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Noonddudung2</title><subtitle>- Interest: Computer Vision, Diffusion Models, Image Editing
-</subtitle><author><name>noonddudung2</name></author><entry><title type="html">Improving Semantic Corresspondence With Viewpoint Guided Spherical Maps</title><link href="http://localhost:4000/improving-semantic-corresspondence-with-viewpoint-guided-spherical-maps" rel="alternate" type="text/html" title="Improving Semantic Corresspondence With Viewpoint Guided Spherical Maps" /><published>2024-09-01T00:00:00+09:00</published><updated>2024-09-01T00:00:00+09:00</updated><id>http://localhost:4000/Improving-Semantic-Corresspondence-with-Viewpoint-Guided-Spherical-Maps</id><content type="html" xml:base="http://localhost:4000/improving-semantic-corresspondence-with-viewpoint-guided-spherical-maps">&lt;h1 id=&quot;-논문리뷰-improving-semantic-correspondence-with-veiwpoint-guided-spherical-maps&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffebb4&quot;&gt; [논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps&lt;/span&gt;&lt;/h1&gt;
-
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-02T00:20:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Noonddudung2</title><subtitle>- Interest: Computer Vision, Diffusion Models, Image Editing
+</subtitle><author><name>noonddudung2</name></author><entry><title type="html">Improving Semantic Corresspondence With Viewpoint Guided Spherical Maps</title><link href="http://localhost:4000/improving-semantic-corresspondence-with-viewpoint-guided-spherical-maps" rel="alternate" type="text/html" title="Improving Semantic Corresspondence With Viewpoint Guided Spherical Maps" /><published>2024-09-01T00:00:00+09:00</published><updated>2024-09-01T00:00:00+09:00</updated><id>http://localhost:4000/Improving-Semantic-Corresspondence-with-Viewpoint-Guided-Spherical-Maps</id><content type="html" xml:base="http://localhost:4000/improving-semantic-corresspondence-with-viewpoint-guided-spherical-maps">&lt;!-- # &lt;span style=&quot;color: black; background-color: #ffebb4&quot;&gt; [논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps&lt;/span&gt; --&gt;
+&lt;h2 id=&quot;paper&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Paper&lt;/span&gt;&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Paper: &lt;a href=&quot;https://arxiv.org/pdf/2312.13216&quot;&gt;SC paper&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Github: &lt;a href=&quot;https://github.com/VICO-UoE/SphericalMaps&quot;&gt;SC Code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Background&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Self-&lt;strong&gt;di&lt;/strong&gt;stillation with &lt;strong&gt;no&lt;/strong&gt; labels (DINO)&lt;/li&gt;
+  &lt;li&gt;SSL&lt;/li&gt;
+  &lt;li&gt;Semantic Corresspondence (SC)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
@@ -12,27 +21,102 @@
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;background&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Background&lt;/span&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Introduction&lt;/span&gt;&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;DINO&lt;/li&gt;
-  &lt;li&gt;SSL&lt;/li&gt;
-  &lt;li&gt;Semantic Corresspondence (SC)&lt;/li&gt;
+  &lt;li&gt;문제점: 3D understanding이 없는 simple part detecting SSL SC 방식
+    &lt;ol&gt;
+      &lt;li&gt;&lt;strong&gt;object symmetries&lt;/strong&gt; : 대칭의 object를 보여주었을 때 -&amp;gt; reflected version of feature map 만듦&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;repeated structures&lt;/strong&gt; : 비슷하게 보이는 부분들에 대해 비슷한 특징으로 인식&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;해결책
+    &lt;ol&gt;
+      &lt;li&gt;seperate visually similar parts (&lt;strong&gt;repeated structures&lt;/strong&gt;) by mapping them to different locationon a sphere&lt;/li&gt;
+      &lt;li&gt;simple genomtric constraints during the training&lt;/li&gt;
+      &lt;li&gt;new evaluation protocol: PCK to KAP&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;related-work&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Related Work&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Image Matching: 다른 view에서 같은 부분 찾기&lt;/li&gt;
+  &lt;li&gt;Semantic Correspondence (SC)
+    &lt;ul&gt;
+      &lt;li&gt;다른 view에서 같은 object instance 찾기만 하는 것이 아닌, 같은 object category의 instances 찾기&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;3D priors for correspondence
+    &lt;ul&gt;
+      &lt;li&gt;보통 annotaed meshes 사용해서 SC&lt;/li&gt;
+      &lt;li&gt;mesh가 없는 경우 precise camera pose를 통해서 SC&lt;/li&gt;
+      &lt;li&gt;이 논문에서는 mesh 없이 coarse viewpoint supervision으로도 SC 가능&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&quot;method&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Method&lt;/span&gt;&lt;/h2&gt;
-&lt;h3 id=&quot;preliminaries&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Preliminaries&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;problem-statement&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Problem statement&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;General Formulation
+    &lt;ul&gt;
+      &lt;li&gt;목적: learn a mapping $f(I,x)=z \ or \ f(I)=z$로 표시
+        &lt;ul&gt;
+          &lt;li&gt;$I: \Lambda \rightarrow \mathbb{R}^3, \Lambda \subset \mathbb{R}^2$&lt;/li&gt;
+          &lt;li&gt;a pixel location: $ x \in \Lambda$&lt;/li&gt;
+          &lt;li&gt;n-dimensional embedding space $ z \in \mathcal{Z} \subset \mathbb{R}^n$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;$f(I,x) = f(I’,x’)$ when $x \leftrightarrow x’$ same semantic part and instance
+        &lt;ul&gt;
+          &lt;li&gt;$argmin_{x’}d_{\mathcal{Z}(f(I,x),f(I’,x’))}$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Spherical mapping
+    &lt;ul&gt;
+      &lt;li&gt;simplified the 3D structure to a sphere $S^2 \subset \mathbb{R}^3$
+        &lt;ul&gt;
+          &lt;li&gt;$S$는 geodesic distance 제공하여 계산을 단순하게 만들어 줌&lt;/li&gt;
+          &lt;li&gt;따라서 이 논문에서는 $f_{S}(I,x)$ &lt;em&gt;spherical mapping&lt;/em&gt;이 목적&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;learning-formulation&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Learning formulation&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;images/sc/sc_pipeline.png&quot; alt=&quot;sc_pipeline&quot; /&gt;
+&lt;img src=&quot;images/sc/sc_eq1.png&quot; alt=&quot;sc_eq1&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\phi: \Lambda \rightarrow \mathcal{Z}_{\phi} $: pretrained SSl model&lt;/li&gt;
+  &lt;li&gt;spherical prototype $S_{\mathcal{Z}}: S \rightarrow \mathcal{Z}$&lt;/li&gt;
+  &lt;li&gt;$M(I,x)$ : object’s sufrace에 만 적용되어서 loss computation 제한&lt;/li&gt;
+  &lt;li&gt;$\Gamma (\phi(I,x),S_{\mathcal{Z}(f_S(I,x))})$: SSL pretrained model의 z location sphere z location 간의 차이를 줄이기 위한 목적
+    &lt;ul&gt;
+      &lt;li&gt;$\Gamma$: cosine distance&lt;/li&gt;
+      &lt;li&gt;$S_{\mathcal{Z}}$: ViT self attention 없이 cross attention 으로 cateogry condition으로 넣어서 사용&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;vim-block&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Vim Block&lt;/span&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;summary--reviewspan&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Summary &amp;amp; Review/span&amp;gt;&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;원래 SC task에서 어떤 방식으로 했는지를 정확히 모르니까 차이점을 알기가 어려운 듯&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;!-- 
 # Sample heading 1
 
 ## Sample heading 2
-
+å
 ### Sample heading 3
 
 #### Sample heading 4
@@ -116,4 +200,4 @@ This is an image[^4]
     
 [^3]: this is another footnote.
     
-[^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. --&gt;</content><author><name>noonddudung2</name></author><category term="CVPR 2024 oral" /><category term="semantic correspondence" /><summary type="html">[논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps</summary></entry></feed>
+[^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. --&gt;</content><author><name>noonddudung2</name></author><category term="CVPR 2024 oral" /><category term="semantic correspondence" /><summary type="html">Paper Paper: SC paper Github: SC Code</summary></entry></feed>

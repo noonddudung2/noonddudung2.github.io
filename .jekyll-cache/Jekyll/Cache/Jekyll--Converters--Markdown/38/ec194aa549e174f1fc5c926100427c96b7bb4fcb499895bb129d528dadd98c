@@ -1,0 +1,152 @@
+I"<h1 id="-논문리뷰-improving-semantic-correspondence-with-veiwpoint-guided-spherical-maps"><span style="color: black; background-color: #ffebb4"> [논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps</span></h1>
+
+<ul>
+  <li>Paper: <a href="https://arxiv.org/pdf/2312.13216">SC paper</a></li>
+  <li>Github: <a href="https://github.com/VICO-UoE/SphericalMaps">SC Code</a></li>
+</ul>
+
+<hr />
+
+<h2 id="background"><span style="color: black; background-color: #ffd1df">Background</span></h2>
+<ul>
+  <li>Self-<strong>di</strong>stillation with <strong>no</strong> labels (DINO)</li>
+  <li>SSL</li>
+  <li>Semantic Corresspondence (SC)</li>
+</ul>
+
+<hr />
+
+<h2 id="abstract"><span style="color: black; background-color: #ffd1df">Abstract</span></h2>
+
+<hr />
+
+<h2 id="introduction"><span style="color: black; background-color: #ffd1df">Introduction</span></h2>
+<ul>
+  <li>문제점: 3D understanding이 없는 simple part detecting SSL SC 방식
+    <ul>
+      <li>
+        <ol>
+          <li>object <em>symmetries</em></li>
+        </ol>
+      </li>
+      <li>
+        <ol>
+          <li><em>individual parts</em></li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="related-work"><span style="color: black; background-color: #ffd1df">Related Work</span></h2>
+<ul>
+  <li>Image Matching: 다른 view에서 같은 부분 찾기</li>
+  <li>Semantic Correspondence (SC)
+    <ul>
+      <li>다른 view에서 같은 object instance 찾기만 하는 것이 아닌, 같은 object category의 instances 찾기</li>
+    </ul>
+  </li>
+  <li>3D priors for correspondence</li>
+</ul>
+
+<hr />
+
+<h2 id="method"><span style="color: black; background-color: #ffd1df">Method</span></h2>
+<h3 id="preliminaries"><span style="color: black; background-color: #ffe4e1">Preliminaries</span></h3>
+
+<hr />
+
+<h3 id="vim-block"><span style="color: black; background-color: #ffe4e1">Vim Block</span></h3>
+
+<!-- 
+# Sample heading 1
+
+## Sample heading 2
+
+### Sample heading 3
+
+#### Sample heading 4
+
+##### Sample heading 5
+
+###### Sample heading 6
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod.
+
+## Lists
+
+Unordered:
+
+- Fusce non velit cursus ligula mattis convallis vel at metus[^2].
+- Sed pharetra tellus massa, non elementum eros vulputate non.
+- Suspendisse potenti.
+
+Ordered:
+
+1. Quisque arcu felis, laoreet vel accumsan sit amet, fermentum at nunc.
+2. Sed massa quam, auctor in eros quis, porttitor tincidunt orci.
+3. Nulla convallis id sapien ornare viverra.
+4. Nam a est eget ligula pellentesque posuere.
+
+## Blockquote
+
+The following is a blockquote:
+
+> Suspendisse tempus dolor nec risus sodales posuere. Proin dui dui, mollis a consectetur molestie, lobortis vitae tellus.
+
+## Thematic breaks (<hr>)
+
+Mauris viverra dictum ultricies[^3]. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. **You can put some text inside the horizontal rule like so.**
+
+---
+
+{: data-content="hr with text"}
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. **Or you can just have an clean horizontal rule.**
+
+---
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. Or you can just have an clean horizontal rule.
+
+## Code
+
+Now some code:
+
+```
+const ultimateTruth = 'follow middlepath';
+console.log(ultimateTruth);
+```
+
+And here is some `inline code`!
+
+## Tables
+
+Now a table:
+
+
+| Tables        |      Are      |  Cool |
+| --------------- | :-------------: | ------: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered   |   $12 |
+| zebra stripes |   are neat   |    $1 |
+
+## Images
+
+![theme logo](http://www.abhinavsaxena.com/images/abhinav.jpeg)
+
+This is an image[^4]
+
+---
+
+{: data-content="footnotes"}
+
+[^1]: this is a footnote. You should reach here if you click on the corresponding superscript number.
+    
+[^2]: hey there, don't forget to read all the footnotes!
+    
+[^3]: this is another footnote.
+    
+[^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. -->
+:ET
