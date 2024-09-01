@@ -3,7 +3,7 @@ layout: post
 author: noonddudung2
 tags: [CVPR 2024 oral, semantic correspondence]
 use_math: true
-published: true
+published: false
 
 ---
 <!-- # <span style="color: black; background-color: #ffebb4"> [논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps</span> -->
