@@ -1,5 +1,433 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-02T00:30:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Noonddudung2</title><subtitle>- Interest: Computer Vision, Diffusion Models, Image Editing
-</subtitle><author><name>noonddudung2</name></author><entry><title type="html">Improving Semantic Corresspondence With Viewpoint Guided Spherical Maps</title><link href="http://localhost:4000/improving-semantic-corresspondence-with-viewpoint-guided-spherical-maps" rel="alternate" type="text/html" title="Improving Semantic Corresspondence With Viewpoint Guided Spherical Maps" /><published>2024-09-01T00:00:00+09:00</published><updated>2024-09-01T00:00:00+09:00</updated><id>http://localhost:4000/Improving-Semantic-Corresspondence-with-Viewpoint-Guided-Spherical-Maps</id><content type="html" xml:base="http://localhost:4000/improving-semantic-corresspondence-with-viewpoint-guided-spherical-maps">&lt;!-- # &lt;span style=&quot;color: black; background-color: #ffebb4&quot;&gt; [논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps&lt;/span&gt; --&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-04T01:24:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Noonddudung2</title><subtitle>- Interest: Computer Vision, Diffusion Models, Image Editing
+</subtitle><author><name>noonddudung2</name></author><entry><title type="html">Telling Left From Right:identifying Geometry Aware Semantic Correspondence</title><link href="http://localhost:4000/telling-left-from-right-identifying-geometry-aware-semantic-correspondence" rel="alternate" type="text/html" title="Telling Left From Right:identifying Geometry Aware Semantic Correspondence" /><published>2024-09-03T00:00:00+09:00</published><updated>2024-09-03T00:00:00+09:00</updated><id>http://localhost:4000/Telling-Left-from-Right:Identifying-Geometry-Aware-Semantic-Correspondence</id><content type="html" xml:base="http://localhost:4000/telling-left-from-right-identifying-geometry-aware-semantic-correspondence">&lt;!-- # &lt;span style=&quot;color: black; background-color: #ffebb4&quot;&gt; [논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps&lt;/span&gt; --&gt;
+&lt;h2 id=&quot;paper&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Paper&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Paper: &lt;a href=&quot;https://telling-left-from-right.github.io/files/Telling_Left_from_Right_cr.pdf&quot;&gt;Telling Left from Right&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Github: &lt;a href=&quot;https://github.com/Junyi42/geoaware-sc&quot;&gt;Telling Left from Right code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;abstract&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Abstract&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;문제점
+    &lt;ol&gt;
+      &lt;li&gt;struggle to grasp the gemoetry and orientation of instances (오른쪽 vs. 왼쪽 같이 방향을 잘 모름)&lt;/li&gt;
+      &lt;li&gt;limitation of the current models under simple post-processing&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;해결책 &amp;amp; contributions
+    &lt;ol&gt;
+      &lt;li&gt;improve geometric awareness of the features&lt;/li&gt;
+      &lt;li&gt;benchmark=&lt;/li&gt;
+      &lt;li&gt;SOTA&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Introduction&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Semantic Correspondence
+    &lt;ul&gt;
+      &lt;li&gt;정의: the establishment of pixel-level matches between two imnages with semantically similar objects&lt;/li&gt;
+      &lt;li&gt;문제: underperform on “geometry-aware” semantic coresspondences (ex. 오른쪽 왼쪽 구분 못함)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;“geometry-&lt;strong&gt;ambiguous&lt;/strong&gt; matching” &lt;strong&gt;innate&lt;/strong&gt; failure or can be &lt;strong&gt;alleviated through post processing&lt;/strong&gt;?
+    &lt;ul&gt;
+      &lt;li&gt;해결책
+        &lt;ol&gt;
+          &lt;li&gt;test-time viewpoint alignmnt startegy (viewpoint 똑같게 맞추기)&lt;/li&gt;
+          &lt;li&gt;train a lightweight post-processing module by using soft-argmax based dense training objective&lt;/li&gt;
+          &lt;li&gt;pose-vairant augmentation startegy, window soft-argmax module&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;related-work&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Related Work&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Semantic Correspondence
+    &lt;ol&gt;
+      &lt;li&gt;feature extraction&lt;/li&gt;
+      &lt;li&gt;cost volume computation&lt;/li&gt;
+      &lt;li&gt;mathicng field regression&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;geometric-awareness-of-deep-features-분석-느낌&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Geometric Awareness of Deep Features (분석 느낌)&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Geometry-Aware Semantic Correspondence
+    &lt;ul&gt;
+      &lt;li&gt;정의: challenging case of semantic correspondence, requires an understanding of instances’ orientations or geometry
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;semantic + orientation understanding이 복합적으로 필요한 cases&lt;/strong&gt;
+            &lt;ol&gt;
+              &lt;li&gt;cluster keypoints into subgroups by semantic parts: $\mathcal{G}_{parts}$
+                &lt;ul&gt;
+                  &lt;li&gt;parts = {ears, paws,…}&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li&gt;subgroup consists of $p_{(parts,index)}$
+                &lt;ul&gt;
+                  &lt;li&gt;$p_{(paws,front \ left)}$&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li&gt;$&amp;lt;p_i^s,p^t_i&amp;gt;$ correspondence two conditions
+                &lt;ul&gt;
+                  &lt;li&gt;same subgroup&lt;/li&gt;
+                  &lt;li&gt;there are other visible keypoints belong to the same subgroup&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ol&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Evaluation on the Geometry-aware Subset
+&lt;img src=&quot;/images/zeroshotsc/evaluation.png&quot; alt=&quot;evaluation&quot; /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;SPair-71k dataset의 60% 정도가 위의 조건을 만족하는 geometry-aware subset dataset임에도 불구하고, &lt;strong&gt;Geo&lt;/strong&gt; set이 standard set보다 PCK 결과가 모든 method에 대해서 현저히 낮음 -&amp;gt; 그만큼 이런 set에 대해서 잘 못한다는 뜻&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Sensitivity to Pose Variation: standard set보다 geo가 더 민감&lt;/li&gt;
+  &lt;li&gt;Global Pose Awareness of Deep Features
+    &lt;ul&gt;
+      &lt;li&gt;Instance matching distance (IMD) : pose prediction accuracy metric (포즈 별로 instance와의 distance 차이를 계산해서 가장 distance가 적은 pose로 예측)
+$IMD(I^s,I^t,M^s)=\sum_{p \in M^s}{\lvert\lvert F^s(p)-NN(F^s(p).F^t)\rvert \rvert_2}$
+        &lt;ul&gt;
+          &lt;li&gt;p: a pixel within the source instance mask&lt;/li&gt;
+          &lt;li&gt;$F^s(p)$: feature vector at p&lt;/li&gt;
+          &lt;li&gt;$NN(F^s(p),F^t)$: nearest-neighboring feature vector&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Pose prediction via IMD
+&lt;img src=&quot;images/zeroshotsc/IMD.png&quot; alt=&quot;IMD&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;improving-geo-aware-correspondence-방법-제시-&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Improving Geo-Aware Correspondence (방법 제시) &lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Test-time &lt;strong&gt;Adaptive Pose Alignment&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;augmentation하면서 IMD가 minimum 되는 지점을 찾아서 align viewpoint 
+&lt;img src=&quot;images/zeroshotsc/adaptive.png&quot; alt=&quot;adaptive&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Dense Training Objective
+&lt;img src=&quot;images/zeroshotsc/pipeline.png&quot; alt=&quot;pipeline&quot; /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;$\mathcal{L}= \mathcal{L_{dense}} + \mathcal{L_{sparse}}$
+        &lt;ul&gt;
+          &lt;li&gt;$\mathcal{L_{sparse}}=CL(\tilde{F}^s(P^s),\tilde{F}^t(P^t))$ : contrastive loss, potentially neglects additional informative features&lt;/li&gt;
+          &lt;li&gt;$\mathcal{L_{dense} = \sum_i{\lvert\lvert \hat p^t_i - (p^t_i + \epsilon)\rvert \rvert _2}}$
+            &lt;ul&gt;
+              &lt;li&gt;$\hat p^t_i$: predicted point position&lt;/li&gt;
+              &lt;li&gt;$p^t_i + \epsilon$: perturbed G.T. position&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Pose-variant Augmentation: self flip - source img and flppied src img&lt;/li&gt;
+  &lt;li&gt;Window Soft Argmax: sub-pixel reasoningm prevents it from nosiy response&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;limitations-&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Limitations &lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;small instances&lt;/li&gt;
+  &lt;li&gt;extreme pose variations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;summary--review-&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Summary &amp;amp; Review &lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;문제 정의: T2I SD의 “geometry-aware” 부족&lt;/li&gt;
+  &lt;li&gt;geometry-aware set을 정의해서 standard set과 비교를 통해 이 문제가 잘 해결되고 있지 않음을 증명/뷴석 (3) 후 방법 제시 (4)&lt;/li&gt;
+  &lt;li&gt;방법 제시: pose prediction, loss 식 추가&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 
+# Sample heading 1
+
+## Sample heading 2
+
+### Sample heading 3
+
+#### Sample heading 4
+
+##### Sample heading 5
+
+###### Sample heading 6
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod.
+
+## Lists
+
+Unordered:
+
+- Fusce non velit cursus ligula mattis convallis vel at metus[^2].
+- Sed pharetra tellus massa, non elementum eros vulputate non.
+- Suspendisse potenti.
+
+Ordered:
+
+1. Quisque arcu felis, laoreet vel accumsan sit amet, fermentum at nunc.
+2. Sed massa quam, auctor in eros quis, porttitor tincidunt orci.
+3. Nulla convallis id sapien ornare viverra.
+4. Nam a est eget ligula pellentesque posuere.
+
+## Blockquote
+
+The following is a blockquote:
+
+&gt; Suspendisse tempus dolor nec risus sodales posuere. Proin dui dui, mollis a consectetur molestie, lobortis vitae tellus.
+
+## Thematic breaks (&lt;hr&gt;)
+
+Mauris viverra dictum ultricies[^3]. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. **You can put some text inside the horizontal rule like so.**
+
+---
+
+{: data-content=&quot;hr with text&quot;}
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. **Or you can just have an clean horizontal rule.**
+
+---
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. Or you can just have an clean horizontal rule.
+
+## Code
+
+Now some code:
+
+```
+const ultimateTruth = 'follow middlepath';
+console.log(ultimateTruth);
+```
+
+And here is some `inline code`!
+
+## Tables
+
+Now a table:
+
+
+| Tables        |      Are      |  Cool |
+| --------------- | :-------------: | ------: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered   |   $12 |
+| zebra stripes |   are neat   |    $1 |
+
+## Images
+
+![theme logo](http://www.abhinavsaxena.com/images/abhinav.jpeg)
+
+This is an image[^4]
+
+---
+
+{: data-content=&quot;footnotes&quot;}
+
+[^1]: this is a footnote. You should reach here if you click on the corresponding superscript number.
+    
+[^2]: hey there, don't forget to read all the footnotes!
+    
+[^3]: this is another footnote.
+    
+[^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. --&gt;</content><author><name>noonddudung2</name></author><category term="CVPR 2024" /><summary type="html">Paper Paper: Telling Left from Right Github: Telling Left from Right code</summary></entry><entry><title type="html">Stableviton: learning Semantic Correspondence With Latent Diffusion Model For Virtual Try On</title><link href="http://localhost:4000/stableviton-learning-semantic-correspondence-with-latent-diffusion-model-for-virtual-try-on" rel="alternate" type="text/html" title="Stableviton: learning Semantic Correspondence With Latent Diffusion Model For Virtual Try On" /><published>2024-09-02T00:00:00+09:00</published><updated>2024-09-02T00:00:00+09:00</updated><id>http://localhost:4000/StableVITON:%20Learning-Semantic-Correspondence-with-Latent-Diffusion-Model-for-Virtual-Try-On</id><content type="html" xml:base="http://localhost:4000/stableviton-learning-semantic-correspondence-with-latent-diffusion-model-for-virtual-try-on">&lt;!-- # &lt;span style=&quot;color: black; background-color: #ffebb4&quot;&gt; [논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps&lt;/span&gt; --&gt;
+&lt;h2 id=&quot;paper&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Paper&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Paper: &lt;a href=&quot;&quot;&gt;StableVITON&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Github: &lt;a href=&quot;&quot;&gt;StableVITON code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;abstract&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Abstract&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;문제점
+    &lt;ol&gt;
+      &lt;li&gt;preserve the clothing details&lt;/li&gt;
+      &lt;li&gt;utilizing the robust generative capability&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;해결책 &amp;amp; contribution: SC between the colthing and the human body
+    &lt;ol&gt;
+      &lt;li&gt;first &lt;strong&gt;end-to-end&lt;/strong&gt; virtual try-on method without independent warping process&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;zero cross-attention blocks&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;attention total variation loss&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Introduction&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;preserving the clothing details &amp;lt;-&amp;gt; using the pretrained diffusion model&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;method&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Method&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;images/stableviton/pipeline.png&quot; alt=&quot;pipeline&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;model-overview&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Model Overview&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;clothing-agnostic map: 의류 정보를 제거한 사람의 image
+    &lt;ul&gt;
+      &lt;li&gt;a person image: $x \in \mathbb{R}^{H \times W \times 3}$&lt;/li&gt;
+      &lt;li&gt;clothing-agnoostic map: $x_a \in \mathbb{R}^{H \times W \times 3}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;notation
+    &lt;ul&gt;
+      &lt;li&gt;$z_t$: the noisy iamge&lt;/li&gt;
+      &lt;li&gt;$\mathcal{E}(x_a)$: latent agnostic map&lt;/li&gt;
+      &lt;li&gt;$x_{m_a}$: resized clothing-agnositc mask&lt;/li&gt;
+      &lt;li&gt;$\mathcal{E}(x_p)$: latent dense pose condition&lt;/li&gt;
+      &lt;li&gt;$\mathcal{E}(x_c)$: spatial encoder (SD encoder), fine details&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;stableviton&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;StableVITON&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Zero Cross-Attention Block
+    &lt;ul&gt;
+      &lt;li&gt;Q: previous self-attention layer (human body) &amp;lt;-&amp;gt; K,V: spatial encoder’s feature map (clothing)&lt;/li&gt;
+      &lt;li&gt;fails to learn the exact semantic correspondence between query and key tokens&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Augmentation: random shifts to input condiiton
+&lt;img src=&quot;images/stableviton/stableviton_eq1.png&quot; alt=&quot;stableviton_eq1&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Attetion Total Variation (ATV) Loss
+    &lt;ul&gt;
+      &lt;li&gt;문제:cross attention ma에서 scores가 분산되어서 나타남&lt;/li&gt;
+      &lt;li&gt;coordinate map $F \in \mathbb{R}^{H_1 \times W_1 \times 2}$:
+        &lt;ul&gt;
+          &lt;li&gt;$F_{ijn} = \frac{1}{h_k w_k}\sum_{k=1}^{h_k}\sum_{l=1}^{w_k}(A_{ijkl}\odot G_{kkln})$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;$\mathcal{L}_{ATV}=\ \lvert\lvert \nabla (F \odot M)\rvert\rvert_1$
+&lt;img src=&quot;images/stableviton/stableviton_eq2.png&quot; alt=&quot;stablevition_eq2&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;summary--review&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Summary &amp;amp; Review&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;diffusion model의 문제점을 해결하고자 semantic correspondence를 활용&lt;/li&gt;
+  &lt;li&gt;diffusion try on이 아니더라도 어떤 task가 있는데 문제점이 spatial information이 사라지는 것이고 -&amp;gt; semantic correspondence를 사용하면 문제가 개선된다면?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 
+# Sample heading 1
+
+## Sample heading 2
+å
+### Sample heading 3
+
+#### Sample heading 4
+
+##### Sample heading 5
+
+###### Sample heading 6
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod.
+
+## Lists
+
+Unordered:
+
+- Fusce non velit cursus ligula mattis convallis vel at metus[^2].
+- Sed pharetra tellus massa, non elementum eros vulputate non.
+- Suspendisse potenti.
+
+Ordered:
+
+1. Quisque arcu felis, laoreet vel accumsan sit amet, fermentum at nunc.
+2. Sed massa quam, auctor in eros quis, porttitor tincidunt orci.
+3. Nulla convallis id sapien ornare viverra.
+4. Nam a est eget ligula pellentesque posuere.
+
+## Blockquote
+
+The following is a blockquote:
+
+&gt; Suspendisse tempus dolor nec risus sodales posuere. Proin dui dui, mollis a consectetur molestie, lobortis vitae tellus.
+
+## Thematic breaks (&lt;hr&gt;)
+
+Mauris viverra dictum ultricies[^3]. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. **You can put some text inside the horizontal rule like so.**
+
+---
+
+{: data-content=&quot;hr with text&quot;}
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. **Or you can just have an clean horizontal rule.**
+
+---
+
+Mauris viverra dictum ultricies. Vestibulum quis ipsum euismod, facilisis metus sed, varius ipsum. Donec scelerisque lacus libero, eu dignissim sem venenatis at. Etiam id nisl ut lorem gravida euismod. Or you can just have an clean horizontal rule.
+
+## Code
+
+Now some code:
+
+```
+const ultimateTruth = 'follow middlepath';
+console.log(ultimateTruth);
+```
+
+And here is some `inline code`!
+
+## Tables
+
+Now a table:
+
+
+| Tables        |      Are      |  Cool |
+| --------------- | :-------------: | ------: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered   |   $12 |
+| zebra stripes |   are neat   |    $1 |
+
+## Images
+
+![theme logo](http://www.abhinavsaxena.com/images/abhinav.jpeg)
+
+This is an image[^4]
+
+---
+
+{: data-content=&quot;footnotes&quot;}
+
+[^1]: this is a footnote. You should reach here if you click on the corresponding superscript number.
+    
+[^2]: hey there, don't forget to read all the footnotes!
+    
+[^3]: this is another footnote.
+    
+[^4]: this is a very very long footnote to test if a very very long footnote brings some problems or not; hope that there are no problems but you know sometimes problems arise from nowhere. --&gt;</content><author><name>noonddudung2</name></author><category term="CVPR 2024" /><category term="T2I" /><category term="geo-aware" /><summary type="html">Paper Paper: StableVITON Github: StableVITON code</summary></entry><entry><title type="html">Improving Semantic Corresspondence With Viewpoint Guided Spherical Maps copy</title><link href="http://localhost:4000/improving-semantic-corresspondence-with-viewpoint-guided-spherical-maps-copy" rel="alternate" type="text/html" title="Improving Semantic Corresspondence With Viewpoint Guided Spherical Maps copy" /><published>2024-09-01T00:00:00+09:00</published><updated>2024-09-01T00:00:00+09:00</updated><id>http://localhost:4000/Improving-Semantic-Corresspondence-with-Viewpoint-Guided-Spherical-Maps%20copy</id><content type="html" xml:base="http://localhost:4000/improving-semantic-corresspondence-with-viewpoint-guided-spherical-maps-copy">&lt;!-- # &lt;span style=&quot;color: black; background-color: #ffebb4&quot;&gt; [논문리뷰] Improving Semantic Correspondence with Veiwpoint-Guided Spherical Maps&lt;/span&gt; --&gt;
 &lt;h2 id=&quot;paper&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffd1df&quot;&gt;Paper&lt;/span&gt;&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Paper: &lt;a href=&quot;https://arxiv.org/pdf/2312.13216&quot;&gt;SC paper&lt;/a&gt;&lt;/li&gt;
@@ -103,6 +531,36 @@
       &lt;li&gt;$S_{\mathcal{Z}}$: ViT self attention 없이 cross attention 으로 cateogry condition으로 넣어서 사용&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;enforcing-gemoetric-priors&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Enforcing gemoetric priors&lt;/span&gt;&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Viewpoint regularization
+&lt;img src=&quot;images/sc/sc_eq2.png&quot; alt=&quot;sc_eq2&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Relative distance loss
+    &lt;ul&gt;
+      &lt;li&gt;$||a-b|| \leq ||a-c|| \longleftrightarrow \Gamma(s_a,s_b) \leq \Gamma(s_a,s_c)$&lt;/li&gt;
+      &lt;li&gt;triplet margin loss: $\mathcal{L}_{rd} = max(\Gamma(f_S(I,anc),f_S(I,pos)-\Gamma(f_S(I,anc),f_S(I,neg))+\sigma,0))$
+        &lt;ul&gt;
+          &lt;li&gt;pos = $argmin_{x\in{ b,c }}||a-x||$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Orientation loss
+&lt;img src=&quot;images/sc/sc_eq3.png&quot; alt=&quot;sc_eq3&quot; /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;x \in \mathbb{R}^{}
+        &lt;h3 id=&quot;correspondence-via-combined-represntations&quot;&gt;&lt;span style=&quot;color: black; background-color: #ffe4e1&quot;&gt;Correspondence via combined represntations&lt;/span&gt;&lt;/h3&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$p^* = argmin_p \Gamma(f_S(I,q),f_S(I’,p))$
+    &lt;ul&gt;
+      &lt;li&gt;q: query location&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$p^* = argmin_p(a-\alpha)\Gamma(\phi(I,q),\phi(I’,p)) + \alpha \Gamma(f_S(I,q),f_S(I’,p))$&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
